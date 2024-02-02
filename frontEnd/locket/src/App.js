@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 import contractABI from "./abi.json";
+import "./App.css"
 
 function App() {
   const contractAddress = "0x8806D9c5AA4DaEF4386F408875a1019747dB9614";
@@ -64,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <div>Messaging app</div>
+        <div id="message">Messaging app</div>
         <input
           type="text"
           placeholder="Enter your message"

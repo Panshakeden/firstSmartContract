@@ -11,6 +11,7 @@ function App() {
 
   const [inputMessage, setInputMessage] = useState(""); // Renamed state variable
   const [getmsg, setGetmsg] = useState(" ");
+  
   async function sendMessageToContract() {
     // Renamed function
     if (typeof window.ethereum !== "undefined") {
@@ -26,8 +27,8 @@ function App() {
       try {
         const transaction = await contract.setMessage(inputMessage);
         await transaction.wait();
-        console.log("msg sent");
-        setInputMessage(" ");
+        console.log("message sent");
+        setInputMessage("  ");
       } catch (err) {
         console.error("Error:", err);
       }
@@ -49,7 +50,7 @@ function App() {
       try {
         const transaction = await contract.getMessage();
         setGetmsg(transaction);
-        console.log(transaction);
+        console.log(" ssent");
       } catch (err) {
         console.error("Error:", err);
       }
@@ -63,13 +64,14 @@ function App() {
   return (
     <div className="App">
       <div>
+        <div>Messaging app</div>
         <input
           type="text"
           placeholder="Enter your message"
           value={inputMessage}
           onChange={handleMessageChange}
-        />
-        <button onClick={sendMessageToContract}>Set Message</button>
+        /> <br></br>
+        <button onClick={sendMessageToContract}>Set Message</button> <br></br>
         <button onClick={getMessageToContract}>Get message</button>
       </div>
       <div>

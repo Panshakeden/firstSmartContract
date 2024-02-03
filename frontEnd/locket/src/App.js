@@ -11,9 +11,9 @@ function App() {
   }
 
   const [inputMessage, setInputMessage] = useState(""); // Renamed state variable
-  const [getmsg, setGetmsg] = useState(" ");
+  const [getmsg, setGetMessage] = useState(" ");
   
-  async function sendMessageToContract() {
+  async function sendMessageTo() {
     // Renamed function
     if (typeof window.ethereum !== "undefined") {
       await requestAccount();
@@ -36,8 +36,7 @@ function App() {
     }
   }
 
-  async function getMessageToContract() {
-    // Renamed function
+  async function getMessageTo() {
     if (typeof window.ethereum !== "undefined") {
       await requestAccount();
       const provider = new ethers.BrowserProvider(window.ethereum);
@@ -50,7 +49,7 @@ function App() {
 
       try {
         const transaction = await contract.getMessage();
-        setGetmsg(transaction);
+        setGetMessage(transaction);
         console.log(" ssent");
       } catch (err) {
         console.error("Error:", err);
@@ -58,7 +57,7 @@ function App() {
     }
   }
 
-  const handleMessageChange = (e) => {
+  const MessageChange = (e) => {
     setInputMessage(e.target.value);
   };
 
@@ -70,10 +69,10 @@ function App() {
           type="text"
           placeholder="Enter your message"
           value={inputMessage}
-          onChange={handleMessageChange}
+          onChange={MessageChange}
         /> <br></br>
-        <button onClick={sendMessageToContract}>Set Message</button> <br></br>
-        <button onClick={getMessageToContract}>Get message</button>
+        <button onClick={sendMessageTo}>Set Message</button> <br></br>
+        <button onClick={getMessageTo}>Get message</button>
       </div>
       <div>
         <p>{getmsg}</p>
